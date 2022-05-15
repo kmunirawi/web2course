@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome', ['name'=>'Khaled', 'age'=>35]);
+    // return view('welcome', ['name'=>"<script>alert('TEST')</script>", 'age'=>35]);
+    return view('welcome', ['name'=>"<h1>Khaled</h1>", 'age'=>35]);
 });
+
+// Basic Route
+Route::get('welcome2', function(){
+    return 'Hello Laravel';
+});
+
+// Controller Route
+Route::get('croute', [Controller::class, 'login']);
+
+//Redirect Route
+// Route::redirect('welcome2', 'croute');
+
+//Redirect External Route
+Route::redirect('welcome2', 'https://www.google.com/');
+
+// View Route
+Route::view('vroute', 'student.page');
+
+// View Route with data
+// Route::get('vroute', function () {
+//     return view('welcome');
+// });
+
+// Named Route
+Route::redirect('ssdgdgvdkufhlfhe', 'https://www.google.com/')->name('go.to.google');
